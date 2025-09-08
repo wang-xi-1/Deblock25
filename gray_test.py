@@ -86,15 +86,15 @@ def main():
             img_H = util.imread_uint(H_paths[idx], n_channels=n_channels).squeeze()
 
             H, W = img_L.shape[-2:]
-            img_L = torch.nn.functional.pad(img_L,
-                                            (0, (16 - img_L.shape[-1] % 16) % 16, 0, (16 - img_L.shape[-2] % 16) % 16),
-                                            mode='constant', value=0)
+            # img_L = torch.nn.functional.pad(img_L,
+            #                                 (0, (16 - img_L.shape[-1] % 16) % 16, 0, (16 - img_L.shape[-2] % 16) % 16),
+            #                                 mode='constant', value=0)
 
             # ------------------------------------  
             # (2) img_E  
             # ------------------------------------  
             img_E = model(img_L)
-            img_E = img_E[..., :H, :W]
+            # img_E = img_E[..., :H, :W]
 
             img_E = util.tensor2single(img_E)  
             img_E = util.single2uint(img_E)
